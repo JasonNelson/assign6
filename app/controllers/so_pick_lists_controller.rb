@@ -1,6 +1,13 @@
 class SoPickListsController < ApplicationController
   before_action :set_so_pick_list, only: [:show, :edit, :update, :destroy]
+  before_filter :check_for_cancel, :only => [:create, :update]
 
+   def check_for_cancel
+     if params[:commit] == "Cancel"
+       redirect_to new_so_pick_list_url
+     end
+   end
+   
   # GET /so_pick_lists
   # GET /so_pick_lists.json
   def index
@@ -28,7 +35,8 @@ class SoPickListsController < ApplicationController
 
     respond_to do |format|
       if @so_pick_list.save
-        format.html { redirect_to @so_pick_list, notice: 'So pick list was successfully created.' }
+        flash[:success] = "So pick list was successfully created!"
+        format.html { redirect_to @so_pick_list }
         format.json { render :show, status: :created, location: @so_pick_list }
       else
         format.html { render :new }
@@ -42,7 +50,8 @@ class SoPickListsController < ApplicationController
   def update
     respond_to do |format|
       if @so_pick_list.update(so_pick_list_params)
-        format.html { redirect_to @so_pick_list, notice: 'So pick list was successfully updated.' }
+        flash[:success] = "So pick list was successfully updated!"
+        format.html { redirect_to @so_pick_list }
         format.json { render :show, status: :ok, location: @so_pick_list }
       else
         format.html { render :edit }

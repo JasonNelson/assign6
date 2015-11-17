@@ -2,12 +2,12 @@
 
 <p>
   <strong>Sales order:</strong>
-  <%= @so_shipment.sales_order %>
+  <%= @so_shipment.sales_order_id %>
 </p>
 
 <p>
   <strong>Customer account:</strong>
-  <%= @so_shipment.customer_account %>
+  <%= @so_shipment.customer_account_id %>
 </p>
 
 <p>
@@ -45,5 +45,16 @@
   <%= @so_shipment.shipped_by %>
 </p>
 
-<%= link_to 'Edit', edit_so_shipment_path(@so_shipment) %> |
-<%= link_to 'Back', so_shipments_path %>
+<div class="row">
+   <div class="col-md-2 col-md-offset-0">
+      <%= link_to 'Edit your information', edit_so_shipment_path(@so_shipment), class: "btn btn-info" %>
+   </div>
+   <div class="col-md-2 col-md-offset-0">
+      <%= link_to 'Home', root_path, class: "btn btn-success" %>
+   </div>
+</div>
+
+<% if false %>
+   <%= link_to 'Edit', edit_so_shipment_path(@so_shipment) %> |
+   <%= link_to 'Back', new_so_shipment_path %>
+<% end %>

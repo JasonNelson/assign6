@@ -20,8 +20,8 @@
         <td><%= order_line.qty_ordered %></td>
         <td><%= order_line.unit_price %></td>
         <td><%= order_line.total_price %></td>
-        <td><%= order_line.sales_order %></td>
-        <td><%= order_line.inventory_item %></td>
+        <td><%= order_line.sales_order_id %></td>
+        <td><%= order_line.inventory_item_id %></td>
         <td><%= link_to 'Show', order_line %></td>
         <td><%= link_to 'Edit', edit_order_line_path(order_line) %></td>
         <td><%= link_to 'Destroy', order_line, method: :delete, data: { confirm: 'Are you sure?' } %></td>

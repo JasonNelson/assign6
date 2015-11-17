@@ -1,10 +1,18 @@
 class CustomerAccountsController < ApplicationController
   before_action :set_customer_account, only: [:show, :edit, :update, :destroy]
+  before_filter :check_for_cancel, :only => [:create, :update]
+
+def check_for_cancel
+  if params[:commit] == "Cancel"
+    redirect_to new_customer_account_url
+  end
+end
 
   # GET /customer_accounts
   # GET /customer_accounts.json
+
   def index
-    @customer_accounts = CustomerAccount.all
+    @customer_accounts = CustomerAccount.paginate(page: params[:page])
   end
 
   # GET /customer_accounts/1
@@ -28,7 +36,8 @@ class CustomerAccountsController < ApplicationController
 
     respond_to do |format|
       if @customer_account.save
-        format.html { redirect_to @customer_account, notice: 'Customer account was successfully created.' }
+        flash[:success] = "Customer account was successfully created!"
+        format.html { redirect_to @customer_account }
         format.json { render :show, status: :created, location: @customer_account }
       else
         format.html { render :new }
@@ -42,7 +51,8 @@ class CustomerAccountsController < ApplicationController
   def update
     respond_to do |format|
       if @customer_account.update(customer_account_params)
-        format.html { redirect_to @customer_account, notice: 'Customer account was successfully updated.' }
+        flash[:success] = "Customer account was successfully updated!"
+        format.html { redirect_to @customer_account }
         format.json { render :show, status: :ok, location: @customer_account }
       else
         format.html { render :edit }

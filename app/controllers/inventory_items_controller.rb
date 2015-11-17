@@ -28,7 +28,8 @@ class InventoryItemsController < ApplicationController
 
     respond_to do |format|
       if @inventory_item.save
-        format.html { redirect_to @inventory_item, notice: 'Inventory item was successfully created.' }
+        flash[:success] = "Inventory item was successfully created."
+        format.html { redirect_to @inventory_item }
         format.json { render :show, status: :created, location: @inventory_item }
       else
         format.html { render :new }

@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Fname:</strong>
+  <strong>First name:</strong>
   <%= @customer_account.fname %>
 </p>
 
@@ -11,12 +10,12 @@
 </p>
 
 <p>
-  <strong>Lname:</strong>
+  <strong>Last name:</strong>
   <%= @customer_account.lname %>
 </p>
 
 <p>
-  <strong>Street add:</strong>
+  <strong>Street address:</strong>
   <%= @customer_account.street_add %>
 </p>
 
@@ -31,7 +30,7 @@
 </p>
 
 <p>
-  <strong>Zipcode:</strong>
+  <strong>Zip code:</strong>
   <%= @customer_account.zipcode %>
 </p>
 
@@ -51,7 +50,7 @@
 </p>
 
 <p>
-  <strong>Phone pref:</strong>
+  <strong>Phone preference:</strong>
   <%= @customer_account.phone_pref %>
 </p>
 
@@ -60,5 +59,16 @@
   <%= @customer_account.password %>
 </p>
 
+<div class="row">
+   <div class="col-md-2 col-md-offset-0">
+      <%= link_to 'Edit your information', edit_customer_account_path(@customer_account), class: "btn btn-info" %>
+   </div>
+   <div class="col-md-2 col-md-offset-0">
+      <%= link_to 'Home', root_path, class: "btn btn-success" %>
+   </div>
+</div>
+
+<% if false %>
 <%= link_to 'Edit', edit_customer_account_path(@customer_account) %> |
-<%= link_to 'Back', customer_accounts_path %>
+<%= link_to 'Back', root_path %>
+<% end %>

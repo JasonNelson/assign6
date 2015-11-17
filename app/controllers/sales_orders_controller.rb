@@ -1,10 +1,17 @@
 class SalesOrdersController < ApplicationController
   before_action :set_sales_order, only: [:show, :edit, :update, :destroy]
+  before_filter :check_for_cancel, :only => [:create, :update]
 
+def check_for_cancel
+  if params[:commit] == "Cancel"
+    redirect_to new_sales_order_url
+  end
+end
   # GET /sales_orders
   # GET /sales_orders.json
+
   def index
-    @sales_orders = SalesOrder.all
+    @sales_orders = SalesOrder.paginate(page: params[:page])
   end
 
   # GET /sales_orders/1
@@ -28,7 +35,8 @@ class SalesOrdersController < ApplicationController
 
     respond_to do |format|
       if @sales_order.save
-        format.html { redirect_to @sales_order, notice: 'Sales order was successfully created.' }
+        flash[:success] = "Sales order was successfully created!"
+        format.html { redirect_to @sales_order }
         format.json { render :show, status: :created, location: @sales_order }
       else
         format.html { render :new }
@@ -42,7 +50,8 @@ class SalesOrdersController < ApplicationController
   def update
     respond_to do |format|
       if @sales_order.update(sales_order_params)
-        format.html { redirect_to @sales_order, notice: 'Sales order was successfully updated.' }
+        flash[:success] = "Sales order was successfully updated!"
+        format.html { redirect_to @sales_order }
         format.json { render :show, status: :ok, location: @sales_order }
       else
         format.html { render :edit }
@@ -53,13 +62,26 @@ class SalesOrdersController < ApplicationController
 
   # DELETE /sales_orders/1
   # DELETE /sales_orders/1.json
+
   def destroy
     @sales_order.destroy
-    respond_to do |format|
-      format.html { redirect_to sales_orders_url, notice: 'Sales order was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Sales Order deleted"
+    redirect_to request.referrer || root_url
   end
+
+  # def destroy
+  #   SalesOrder.find(params[:id]).destroy
+  #   flash[:success] = "Sales Order deleted"
+  #   redirect_to sales_orders_url
+  # end
+
+  # def destroy
+  #   @sales_order.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to sales_orders_url, notice: 'Sales order was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

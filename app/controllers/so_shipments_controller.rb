@@ -1,6 +1,12 @@
 class SoShipmentsController < ApplicationController
   before_action :set_so_shipment, only: [:show, :edit, :update, :destroy]
+  before_filter :check_for_cancel, :only => [:create, :update]
 
+  def check_for_cancel
+    if params[:commit] == "Cancel"
+      redirect_to new_so_shipment_url
+    end
+  end
   # GET /so_shipments
   # GET /so_shipments.json
   def index
@@ -28,7 +34,8 @@ class SoShipmentsController < ApplicationController
 
     respond_to do |format|
       if @so_shipment.save
-        format.html { redirect_to @so_shipment, notice: 'So shipment was successfully created.' }
+        flash[:success] = "Sales Order shipment was successful!"
+        format.html { redirect_to @so_shipment }
         format.json { render :show, status: :created, location: @so_shipment }
       else
         format.html { render :new }
@@ -42,7 +49,8 @@ class SoShipmentsController < ApplicationController
   def update
     respond_to do |format|
       if @so_shipment.update(so_shipment_params)
-        format.html { redirect_to @so_shipment, notice: 'So shipment was successfully updated.' }
+        flash[:success] = "Sales Order shipment was successfully updated!"
+        format.html { redirect_to @so_shipment }
         format.json { render :show, status: :ok, location: @so_shipment }
       else
         format.html { render :edit }
