@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sales order:</strong>
+  <%= @so_pick_list.sales_order %>
+</p>
+
+<p>
+  <strong>Order line:</strong>
+  <%= @so_pick_list.order_line %>
+</p>
+
+<%= link_to 'Edit', edit_so_pick_list_path(@so_pick_list) %> |
+<%= link_to 'Back', so_pick_lists_path %>

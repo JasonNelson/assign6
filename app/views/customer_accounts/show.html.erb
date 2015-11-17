@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @customer_account.fname %>
+</p>
+
+<p>
+  <strong>Middle initial:</strong>
+  <%= @customer_account.middle_initial %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @customer_account.lname %>
+</p>
+
+<p>
+  <strong>Street add:</strong>
+  <%= @customer_account.street_add %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @customer_account.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @customer_account.state %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @customer_account.zipcode %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @customer_account.email %>
+</p>
+
+<p>
+  <strong>Home phone:</strong>
+  <%= @customer_account.home_phone %>
+</p>
+
+<p>
+  <strong>Cell phone:</strong>
+  <%= @customer_account.cell_phone %>
+</p>
+
+<p>
+  <strong>Phone pref:</strong>
+  <%= @customer_account.phone_pref %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @customer_account.password %>
+</p>
+
+<%= link_to 'Edit', edit_customer_account_path(@customer_account) %> |
+<%= link_to 'Back', customer_accounts_path %>

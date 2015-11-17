@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Order Lines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Qty ordered</th>
+      <th>Unit price</th>
+      <th>Total price</th>
+      <th>Sales order</th>
+      <th>Inventory item</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_lines.each do |order_line| %>
+      <tr>
+        <td><%= order_line.qty_ordered %></td>
+        <td><%= order_line.unit_price %></td>
+        <td><%= order_line.total_price %></td>
+        <td><%= order_line.sales_order %></td>
+        <td><%= order_line.inventory_item %></td>
+        <td><%= link_to 'Show', order_line %></td>
+        <td><%= link_to 'Edit', edit_order_line_path(order_line) %></td>
+        <td><%= link_to 'Destroy', order_line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order line', new_order_line_path %>

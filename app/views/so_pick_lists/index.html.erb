@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing So Pick Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sales order</th>
+      <th>Order line</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @so_pick_lists.each do |so_pick_list| %>
+      <tr>
+        <td><%= so_pick_list.sales_order %></td>
+        <td><%= so_pick_list.order_line %></td>
+        <td><%= link_to 'Show', so_pick_list %></td>
+        <td><%= link_to 'Edit', edit_so_pick_list_path(so_pick_list) %></td>
+        <td><%= link_to 'Destroy', so_pick_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New So pick list', new_so_pick_list_path %>

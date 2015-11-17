@@ -1,0 +1,105 @@
+<%= form_for(@sales_order) do |f| %>
+  <% if @sales_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sales_order.errors.count, "error") %> prohibited this sales_order from being saved:</h2>
+
+      <ul>
+      <% @sales_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :billing_street_add %><br>
+    <%= f.text_field :billing_street_add %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_city %><br>
+    <%= f.text_field :billing_city %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_state %><br>
+    <%= f.text_field :billing_state %>
+  </div>
+  <div class="field">
+    <%= f.label :billing_zipcode %><br>
+    <%= f.text_field :billing_zipcode %>
+  </div>
+  <div class="field">
+    <%= f.label :shipping_street_address %><br>
+    <%= f.text_field :shipping_street_address %>
+  </div>
+  <div class="field">
+    <%= f.label :shipping_city %><br>
+    <%= f.text_field :shipping_city %>
+  </div>
+  <div class="field">
+    <%= f.label :shipping_state %><br>
+    <%= f.text_field :shipping_state %>
+  </div>
+  <div class="field">
+    <%= f.label :shipping_zipcode %><br>
+    <%= f.text_field :shipping_zipcode %>
+  </div>
+  <div class="field">
+    <%= f.label :cc_fname %><br>
+    <%= f.text_field :cc_fname %>
+  </div>
+  <div class="field">
+    <%= f.label :cc_middle_initial %><br>
+    <%= f.text_field :cc_middle_initial %>
+  </div>
+  <div class="field">
+    <%= f.label :cc_lname %><br>
+    <%= f.text_field :cc_lname %>
+  </div>
+  <div class="field">
+    <%= f.label :cc_number %><br>
+    <%= f.text_field :cc_number %>
+  </div>
+  <div class="field">
+    <%= f.label :cc_security_code %><br>
+    <%= f.text_field :cc_security_code %>
+  </div>
+  <div class="field">
+    <%= f.label :cc_exp_month %><br>
+    <%= f.text_field :cc_exp_month %>
+  </div>
+  <div class="field">
+    <%= f.label :cc_exp_year %><br>
+    <%= f.text_field :cc_exp_year %>
+  </div>
+  <div class="field">
+    <%= f.label :subtotal %><br>
+    <%= f.text_field :subtotal %>
+  </div>
+  <div class="field">
+    <%= f.label :tax_percent %><br>
+    <%= f.number_field :tax_percent %>
+  </div>
+  <div class="field">
+    <%= f.label :shipping_fee %><br>
+    <%= f.text_field :shipping_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :total %><br>
+    <%= f.text_field :total %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_account_id %><br>
+    <%= f.text_field :customer_account_id %>
+  </div>
+  <div class="field">
+    <%= f.label :order_line_id %><br>
+    <%= f.text_field :order_line_id %>
+  </div>
+  <div class="field">
+    <%= f.label :order_status_id %><br>
+    <%= f.text_field :order_status_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

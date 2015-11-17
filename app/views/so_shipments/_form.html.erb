@@ -1,0 +1,53 @@
+<%= form_for(@so_shipment) do |f| %>
+  <% if @so_shipment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@so_shipment.errors.count, "error") %> prohibited this so_shipment from being saved:</h2>
+
+      <ul>
+      <% @so_shipment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sales_order_id %><br>
+    <%= f.text_field :sales_order_id %>
+  </div>
+  <div class="field">
+    <%= f.label :customer_account_id %><br>
+    <%= f.text_field :customer_account_id %>
+  </div>
+  <div class="field">
+    <%= f.label :ship_date %><br>
+    <%= f.text_field :ship_date %>
+  </div>
+  <div class="field">
+    <%= f.label :ship_time %><br>
+    <%= f.text_field :ship_time %>
+  </div>
+  <div class="field">
+    <%= f.label :expected_delivery_date %><br>
+    <%= f.text_field :expected_delivery_date %>
+  </div>
+  <div class="field">
+    <%= f.label :carrier %><br>
+    <%= f.text_field :carrier %>
+  </div>
+  <div class="field">
+    <%= f.label :method %><br>
+    <%= f.text_field :method %>
+  </div>
+  <div class="field">
+    <%= f.label :tracking_num %><br>
+    <%= f.number_field :tracking_num %>
+  </div>
+  <div class="field">
+    <%= f.label :shipped_by %><br>
+    <%= f.text_field :shipped_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

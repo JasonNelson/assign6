@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing So Shipments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sales order</th>
+      <th>Customer account</th>
+      <th>Ship date</th>
+      <th>Ship time</th>
+      <th>Expected delivery date</th>
+      <th>Carrier</th>
+      <th>Method</th>
+      <th>Tracking num</th>
+      <th>Shipped by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @so_shipments.each do |so_shipment| %>
+      <tr>
+        <td><%= so_shipment.sales_order %></td>
+        <td><%= so_shipment.customer_account %></td>
+        <td><%= so_shipment.ship_date %></td>
+        <td><%= so_shipment.ship_time %></td>
+        <td><%= so_shipment.expected_delivery_date %></td>
+        <td><%= so_shipment.carrier %></td>
+        <td><%= so_shipment.method %></td>
+        <td><%= so_shipment.tracking_num %></td>
+        <td><%= so_shipment.shipped_by %></td>
+        <td><%= link_to 'Show', so_shipment %></td>
+        <td><%= link_to 'Edit', edit_so_shipment_path(so_shipment) %></td>
+        <td><%= link_to 'Destroy', so_shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New So shipment', new_so_shipment_path %>

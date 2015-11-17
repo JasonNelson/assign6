@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sales order:</strong>
+  <%= @so_shipment.sales_order %>
+</p>
+
+<p>
+  <strong>Customer account:</strong>
+  <%= @so_shipment.customer_account %>
+</p>
+
+<p>
+  <strong>Ship date:</strong>
+  <%= @so_shipment.ship_date %>
+</p>
+
+<p>
+  <strong>Ship time:</strong>
+  <%= @so_shipment.ship_time %>
+</p>
+
+<p>
+  <strong>Expected delivery date:</strong>
+  <%= @so_shipment.expected_delivery_date %>
+</p>
+
+<p>
+  <strong>Carrier:</strong>
+  <%= @so_shipment.carrier %>
+</p>
+
+<p>
+  <strong>Method:</strong>
+  <%= @so_shipment.method %>
+</p>
+
+<p>
+  <strong>Tracking num:</strong>
+  <%= @so_shipment.tracking_num %>
+</p>
+
+<p>
+  <strong>Shipped by:</strong>
+  <%= @so_shipment.shipped_by %>
+</p>
+
+<%= link_to 'Edit', edit_so_shipment_path(@so_shipment) %> |
+<%= link_to 'Back', so_shipments_path %>

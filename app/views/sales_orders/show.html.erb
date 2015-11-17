@@ -1,0 +1,114 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Billing street add:</strong>
+  <%= @sales_order.billing_street_add %>
+</p>
+
+<p>
+  <strong>Billing city:</strong>
+  <%= @sales_order.billing_city %>
+</p>
+
+<p>
+  <strong>Billing state:</strong>
+  <%= @sales_order.billing_state %>
+</p>
+
+<p>
+  <strong>Billing zipcode:</strong>
+  <%= @sales_order.billing_zipcode %>
+</p>
+
+<p>
+  <strong>Shipping street address:</strong>
+  <%= @sales_order.shipping_street_address %>
+</p>
+
+<p>
+  <strong>Shipping city:</strong>
+  <%= @sales_order.shipping_city %>
+</p>
+
+<p>
+  <strong>Shipping state:</strong>
+  <%= @sales_order.shipping_state %>
+</p>
+
+<p>
+  <strong>Shipping zipcode:</strong>
+  <%= @sales_order.shipping_zipcode %>
+</p>
+
+<p>
+  <strong>Cc fname:</strong>
+  <%= @sales_order.cc_fname %>
+</p>
+
+<p>
+  <strong>Cc middle initial:</strong>
+  <%= @sales_order.cc_middle_initial %>
+</p>
+
+<p>
+  <strong>Cc lname:</strong>
+  <%= @sales_order.cc_lname %>
+</p>
+
+<p>
+  <strong>Cc number:</strong>
+  <%= @sales_order.cc_number %>
+</p>
+
+<p>
+  <strong>Cc security code:</strong>
+  <%= @sales_order.cc_security_code %>
+</p>
+
+<p>
+  <strong>Cc exp month:</strong>
+  <%= @sales_order.cc_exp_month %>
+</p>
+
+<p>
+  <strong>Cc exp year:</strong>
+  <%= @sales_order.cc_exp_year %>
+</p>
+
+<p>
+  <strong>Subtotal:</strong>
+  <%= @sales_order.subtotal %>
+</p>
+
+<p>
+  <strong>Tax percent:</strong>
+  <%= @sales_order.tax_percent %>
+</p>
+
+<p>
+  <strong>Shipping fee:</strong>
+  <%= @sales_order.shipping_fee %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @sales_order.total %>
+</p>
+
+<p>
+  <strong>Customer account:</strong>
+  <%= @sales_order.customer_account %>
+</p>
+
+<p>
+  <strong>Order line:</strong>
+  <%= @sales_order.order_line %>
+</p>
+
+<p>
+  <strong>Order status:</strong>
+  <%= @sales_order.order_status %>
+</p>
+
+<%= link_to 'Edit', edit_sales_order_path(@sales_order) %> |
+<%= link_to 'Back', sales_orders_path %>
