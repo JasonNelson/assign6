@@ -1,3 +1,5 @@
+
+
 <%= form_for(@customer_account) do |f| %>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -71,7 +73,7 @@
   <div class="row">
     <div class="col-md-4 col-md-offset-2">
         <%= f.label :email, "Email*"%>
-        <%= f.email_field :email, class: 'form-control', id:'email' %>
+        <%= f.email_field :email, class: 'form-control' %>
     </div>
     <div class="col-md-4 col-md-offset-0">
         <%= f.label :email_confirmation, "Email confirmation*" %>
@@ -92,17 +94,49 @@
         <%= f.submit "Cancel", class: "btn btn-danger" %>
     </div>
     <div class="col-md-4 col-md-offset-0">
-        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Create my account</button>
+        <button type="button" id="submitBtn" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Create my account</button>
     </div>
-       
+
+<!-- confirmaiton modal starts here -->
+
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+          <h4 class="modal-title" id="myModalLabel">Does everything look ok?</h4>
         </div>
-        <div class="modal-body">Does everything look alright?</div>
+        <div class="modal-body">
+            <p>
+              <strong>Name:</strong>
+              <span id="fname"></span> <span id="middle_initial"></span> <span id="lname"></span>
+            </p>
+
+            <p>
+              <strong>Adress:</strong>
+              <span id="street_add"></span>, <span id="city"></span>, <span id="state"></span> <span id="zipcode"></span>
+            </p>
+
+            <p>
+              <strong>Email:</strong>
+              <span id="email"</span>
+            </p>
+
+            <p>
+              <strong>Home phone:</strong>
+              <span id="home_phone"</span>
+            </p>
+
+            <p>
+              <strong>Cell phone:</strong>
+              <span id="cell_phone"</span>
+            </p>
+
+            <p>
+              <strong>Phone preference:</strong>
+              <span id="phone_pref"</span>
+            </p>
+         </div>
         <div class="modal-footer" style="border: none">
           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
           <button class="btn btn-success">Yes</button>

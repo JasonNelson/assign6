@@ -2,7 +2,7 @@ class CustomerAccount < ActiveRecord::Base
    has_many :sales_orders, :dependent => :destroy
 
    validates :email, confirmation: true
-   validates :email_confirmation, presence: true
+   # validates :email_confirmation, presence: true
    
    validates :fname, length: { maximum: 26 }, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, presence: true
    validates :middle_initial, length: { maximum: 1 }, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, presence: true

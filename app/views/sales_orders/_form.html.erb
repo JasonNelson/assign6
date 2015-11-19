@@ -6,6 +6,38 @@
     </div>
   </div>
 
+  <h6>Shipping Address</h6>
+  
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <%= f.label :shipping_street_address, "Street Address*" %>
+        <%= f.text_field :shipping_street_address, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2">
+        <%= f.label :shipping_city, "City*" %>
+        <%= f.text_field :shipping_city, class: 'form-control' %>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+        <div class="form-group">
+          <%= f.label :shipping_state, "State*" %>
+          <%= f.select(:shipping_state, options_for_select(["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District Of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]), {}, {class: "form-control"}) %>
+        </div>
+    </div>
+    <div class="col-md-2 col-md-offset-0">
+        <%= f.label :shipping_zipcode, "Zip Code*" %>
+        <%= f.text_field :shipping_zipcode, class: 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-0">
+      <hr>
+    </div>
+  </div>
+
   <h6>Billing Address</h6>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -30,38 +62,6 @@
     <div class="col-md-2 col-md-offset-0">
         <%= f.label :billing_zipcode, "Zip Code*" %>
         <%= f.text_field :billing_zipcode, class: 'form-control' %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-10 col-md-offset-0">
-      <hr>
-    </div>
-  </div>
-
-  <h6>Shipping Address</h6>
-  
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <%= f.label :shipping_street_address, "Street Address*" %>
-        <%= f.text_field :shipping_street_address, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-3 col-md-offset-2">
-        <%= f.label :shipping_city, "City*" %>
-        <%= f.text_field :shipping_city, class: 'form-control' %>
-    </div>
-    <div class="col-md-3 col-md-offset-0">
-        <div class="form-group">
-          <%= f.label :shipping_state, "State*" %>
-          <%= f.select(:shipping_state, options_for_select(["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District Of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]), {}, {class: "form-control"}) %>
-        </div>
-    </div>
-    <div class="col-md-2 col-md-offset-0">
-        <%= f.label :shipping_zipcode, "Zip Code*" %>
-        <%= f.text_field :shipping_zipcode, class: 'form-control' %>
     </div>
   </div>
   
@@ -137,7 +137,34 @@
         <%= f.text_field :total, class: 'form-control' %>
     </div>
   </div>
-
+  
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 pad-10"> 
+      <% options = options_from_collection_for_select(InventoryItem.all, 'id', 'product_name') %>
+      <%= f.select :order_line_id, options, :input_html => { class: "form-control" } %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>Select an item to add to sales order</h2>
+      <div class="control-group">
+      <% options = options_from_collection_for_select(InventoryItem.all, 'id', 'product_name') %>
+      <%= f.select :order_line_id, options, :input_html => { class: "form-control" } %>
+      </div>
+      <script>
+      $('#order_line_id').selectize({
+        create: true,
+        sortField: {
+          field: 'text',
+          direction: 'asc'
+        },
+        dropdownParent: 'body'
+      });
+      </script>
+    </div>
+  </div>
+  
   <div class="row">
     <div class="col-md-8 col-sm-offset-2">
         <%= f.label :order_line_id, "order_line_id" %>
@@ -149,24 +176,84 @@
       <%= f.submit "Cancel", class: "btn btn-danger" %>
     </div>
     <div class="col-md-4 col-md-offset-0">
-        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Submit Sales Order</button>
+        <button type="button" id="submitBtn" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Submit Sales Order</button>
     </div>
-       
+
+   <h1>Selectize.js</h1>
+
+   <div class="demo">
+      <h2>&lt;select&gt;</h2>
+      <div class="control-group">
+      <% options = options_from_collection_for_select(InventoryItem.all, 'id', 'product_name') %>
+      <%= f.select :order_line_id, options, :input_html => { class: "demo-default" } %>
+      
+      <select id="order_line_id" class="form-control" placeholder="Select an item...">
+        <option value="">Select a person...</option>
+        <option value="4">Thomas Edison</option>
+        <option value="1">Nikola</option>
+        <option value="3">Nikola Tesla</option>
+        <option value="5">Arnold Schwarzenegger</option>
+           </select>
+               
+      </div>
+      <script>
+      $('#order_line_id').selectize({
+         create: true,
+         sortField: {
+            field: 'text',
+            direction: 'asc'
+         },
+         dropdownParent: 'body'
+      });
+      </script>
+   </div>
+
+<!-- confirmaiton modal starts here -->
+
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
-        </div>
-        <div class="modal-body">Does everything look alright?</div>
-        <div class="modal-footer" style="border: none">
-          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-          <button class="btn btn-success">Yes</button>
-        </div>
+         <div class="modal-content">
+            <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title" id="myModalLabel">Does everything look alright?</h4>
+            </div>
+            <div class="modal-body">
+               <p>
+                 <strong>Shipping Adress:</strong>
+                 <span id="shipping_street_address"></span>, <span id="shipping_city"></span>, <span id="shipping_state"></span> <span id="shipping_zipcode"></span>
+               </p>
+
+               <p>
+                 <strong>Billing Adress:</strong>
+                 <span id="billing_street_add"></span>, <span id="billing_city"></span>, <span id="billing_state"></span> <span id="billing_zipcode"></span>
+               </p>
+               <br>
+               <p>
+                 <strong>Card Name:</strong>
+                 <span id="cc_fname"></span> <span id="cc_middle_initial"></span> <span id="cc_lname"></span>
+               </p>
+
+               <p>
+                 <strong>Card Number:</strong>
+                 <span id="cc_number"</span>
+               </p>
+
+               <p>
+                 <strong>Security code:</strong>
+                 <span id="cc_security_code"</span>
+               </p>
+
+               <p>
+                 <strong>Expiration:</strong>
+                 <span id="cc_exp_month"></span>/<span id="cc_exp_year"></span>
+               </p>
+            </div>
+            <div class="modal-footer" style="border: none">
+               <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+               <button class="btn btn-success">Yes</button>
+            </div>
+         </div>
       </div>
-    </div>
   </div>
-</div>
 
 <% end %>

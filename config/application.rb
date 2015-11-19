@@ -25,5 +25,11 @@ module GlobalPartsOperations
 
     # Include the authenticity token in remote forms.
     config.action_view.embed_authenticity_token_in_remote_forms = true
+
+    # Override default validation and error messages so that they are compatible with Bootstrap-sass
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
+    "<div class=\"has-error form-group\">#{html_tag}</div>".html_safe
+    }
   end
 end
+

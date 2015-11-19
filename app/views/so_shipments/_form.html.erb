@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-4 col-md-offset-0">
         <%= f.label :tracking_num, "Tracking# *" %>
-        <%= f.text_field :tracking_num, class: 'form-control' %>
+        <%= f.text_field :tracking_num, class: 'form-control', placeholder: "eg, 1234567890" %>
     </div>
     <div class="col-md-2 col-md-offset-0">* required field
     </div>
@@ -42,7 +42,7 @@
     </div>
     <div class="col-md-4 col-sm-offset-0">
         <%= f.label :shipped_by, "Shipped by (employee number)*" %>
-        <%= f.text_field :shipped_by, class: 'form-control' %>
+        <%= f.text_field :shipped_by, class: 'form-control', placeholder: "eg, 12345" %>
     </div>
   </div>
   
@@ -51,8 +51,9 @@
         <%= f.submit "Cancel", class: "btn btn-danger" %>
     </div>
     <div class="col-md-4 col-md-offset-0">
-        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Record Shipment</button>
+        <button type="button" id="submitBtn" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Record Shipment</button>
     </div>
+  </div>
        
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -61,7 +62,27 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
         </div>
-        <div class="modal-body">Does everything look alright?</div>
+        <div class="modal-body">
+            <p>
+              <strong>Sales order ID:</strong>
+              <span id="sales_order_id"></span>
+            </p>
+
+            <p>
+              <strong>Carrier and method:</strong>
+              <span id="carrier"></span> <span id="method"></span>
+            </p>
+
+            <p>
+              <strong>Tracking #:</strong>
+              <span id="tracking_num"</span>
+            </p>
+
+            <p>
+              <strong>Shipped by employee#:</strong>
+              <span id="shipped_by"</span>
+            </p>
+        </div>
         <div class="modal-footer" style="border: none">
           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
           <button class="btn btn-success">Yes</button>
@@ -69,6 +90,5 @@
       </div>
     </div>
   </div>
-</div>
 
 <% end %>
